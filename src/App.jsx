@@ -4,12 +4,12 @@ import { Menu, X, Facebook, Instagram, Mail, Calendar, Users, Heart, Award, Brie
 export default function NaveenWebsite() {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
-  const carouselImages = [
-    { url: 'https://via.placeholder.com/800x600/1e40af/ffffff?text=Town+Hall', alt: 'Town Hall' },
-    { url: 'https://via.placeholder.com/800x600/2563eb/ffffff?text=Community', alt: 'Community' },
-    { url: 'https://via.placeholder.com/800x600/3b82f6/ffffff?text=Residents', alt: 'Residents' },
-    { url: 'https://via.placeholder.com/800x600/60a5fa/ffffff?text=Meeting', alt: 'Meeting' }
-  ];
+const carouselImages = [
+  { url: '/campaign-website/images/town-hall.jpg', alt: 'Town Hall' },
+  { url: '/campaign-website/images/community.jpg', alt: 'Community' },
+  { url: '/campaign-website/images/residents.jpg', alt: 'Residents' },
+  { url: '/campaign-website/images/meeting.jpg', alt: 'Meeting' }
+];
 
   React.useEffect(() => {
     const interval = setInterval(() => {

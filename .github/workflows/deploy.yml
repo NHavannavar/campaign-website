@@ -3,6 +3,9 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches: [ main ]
+  schedule:
+    # Daily at 10:00 UTC (6am Eastern) to pick up new Instagram photos
+    - cron: '0 10 * * *'
   workflow_dispatch:
 
 permissions:
@@ -19,6 +22,25 @@ jobs:
         with:
           node-version: '18'
       - run: npm install
+      - name: Sync Instagram photos
+        run: node scripts/sync-instagram.mjs
+        env:
+          INSTAGRAM_TOKEN: ${{ secrets.INSTAGRAM_TOKEN }}
+          INSTAGRAM_HASHTAG: ${{ vars.INSTAGRAM_HASHTAG }}
+          INSTAGRAM_LIMIT: ${{ vars.INSTAGRAM_LIMIT }}
+          REFRESHED_TOKEN_FILE: ${{ runner.temp }}/ig-token
+      # Instagram tokens expire after 60 days unless refreshed. If a
+      # SECRETS_ADMIN_TOKEN secret is set, save the refreshed token back.
+      - name: Save refreshed Instagram token
+        env:
+          GH_TOKEN: ${{ secrets.SECRETS_ADMIN_TOKEN }}
+        run: |
+          f="${{ runner.temp }}/ig-token"
+          if [ -n "$GH_TOKEN" ] && [ -s "$f" ]; then
+            echo "::add-mask::$(cat "$f")"
+            gh secret set INSTAGRAM_TOKEN --repo "${{ github.repository }}" < "$f"
+          fi
+          rm -f "$f"
       - run: npm run build
       - uses: actions/upload-pages-artifact@v3
         with:

@@ -1,15 +1,20 @@
 import React, { useState } from 'react';
 import { Menu, X, Facebook, Instagram, Mail, Calendar, Users, Heart, Award, Briefcase, MapPin, Phone } from 'lucide-react';
+import instagramPhotos from './instagram.json';
 
 export default function NaveenWebsite() {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
-const carouselImages = [
-  { url: '/campaign-website/images/town-hall.jpg', alt: 'Town Hall' },
-  { url: '/campaign-website/images/community.jpg', alt: 'Community' },
-  { url: '/campaign-website/images/residents.jpg', alt: 'Residents' },
-  { url: '/campaign-website/images/meeting.jpg', alt: 'Meeting' }
+// Latest Instagram photos (synced at deploy time); fall back to the built-in set.
+const fallbackImages = [
+  { url: `${import.meta.env.BASE_URL}images/town-hall.jpg`, alt: 'Town Hall', position: 'center 55%' },
+  { url: `${import.meta.env.BASE_URL}images/community.jpg`, alt: 'Community', position: 'center 15%' },
+  { url: `${import.meta.env.BASE_URL}images/residents.jpeg`, alt: 'Residents', position: 'center 38%' },
+  { url: `${import.meta.env.BASE_URL}images/meeting.jpg`, alt: 'Meeting', position: 'center 30%' }
 ];
+const carouselImages = instagramPhotos.length
+  ? instagramPhotos.map((p) => ({ url: `${import.meta.env.BASE_URL}images/instagram/${p.file}`, alt: p.alt, position: 'center 30%' }))
+  : fallbackImages;
 
   React.useEffect(() => {
     const interval = setInterval(() => {
@@ -63,7 +68,7 @@ const carouselImages = [
               <div className="relative h-96 bg-gray-200 rounded-2xl overflow-hidden">
                 {carouselImages.map((img, i) => (
                   <div key={i} className={`absolute inset-0 transition-opacity duration-1000 ${i === currentImageIndex ? 'opacity-100' : 'opacity-0'}`}>
-                    <img src={img.url} alt={img.alt} className="w-full h-full object-cover" />
+                    <img src={img.url} alt={img.alt} className="w-full h-full object-cover" style={{ objectPosition: img.position }} />
                   </div>
                 ))}
                 <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex gap-2">

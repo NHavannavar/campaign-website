@@ -4,6 +4,7 @@ import instagramPhotos from './instagram.json';
 
 export default function NaveenWebsite() {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [menuOpen, setMenuOpen] = useState(false);
 
 // Latest Instagram photos (synced at deploy time); fall back to the built-in set.
 const fallbackImages = [
@@ -24,25 +25,44 @@ const carouselImages = instagramPhotos.length
   }, []);
 
   const scrollToSection = (id) => {
-    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+    setMenuOpen(false);
+    // Wait for the mobile menu to collapse so the target position is final.
+    setTimeout(() => document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' }), 0);
   };
+
+  const navLinks = [
+    ['about', 'About'],
+    ['priorities', 'Priorities'],
+    ['town-work', 'Town Board'],
+    ['updates', 'Updates'],
+    ['contact', 'Contact'],
+  ];
 
   return (
     <div className="min-h-screen bg-white">
       {/* Navigation */}
       <nav className="bg-white shadow-md sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-4 py-4">
-          <div className="flex justify-between items-center">
-            <div className="text-2xl font-bold text-blue-900">NAVEEN HAVANNAVAR</div>
+          <div className="flex justify-between items-center gap-4">
+            <div className="text-xl md:text-2xl font-bold text-blue-900 whitespace-nowrap">NAVEEN HAVANNAVAR</div>
             <div className="flex items-center gap-6 text-sm font-semibold">
-              <button onClick={() => scrollToSection('about')} className="hover:text-blue-600 transition">About</button>
-              <button onClick={() => scrollToSection('priorities')} className="hover:text-blue-600 transition">Priorities</button>
-              <button onClick={() => scrollToSection('town-work')} className="hover:text-blue-600 transition">Town Board</button>
-              <button onClick={() => scrollToSection('updates')} className="hover:text-blue-600 transition">Updates</button>
-              <button onClick={() => scrollToSection('contact')} className="hover:text-blue-600 transition">Contact</button>
-              <a href="https://secure.actblue.com/donate/friendsofnaveen" target="_blank" rel="noopener noreferrer" className="bg-red-600 text-white px-6 py-2 rounded-full font-bold hover:bg-red-700">DONATE</a>
+              {navLinks.map(([id, label]) => (
+                <button key={id} onClick={() => scrollToSection(id)} className="hidden md:block hover:text-blue-600 transition">{label}</button>
+              ))}
+              <a href="https://secure.actblue.com/donate/friendsofnaveen" target="_blank" rel="noopener noreferrer" className="hidden sm:block bg-red-600 text-white px-6 py-2 rounded-full font-bold hover:bg-red-700">DONATE</a>
+              <button onClick={() => setMenuOpen(!menuOpen)} className="md:hidden text-blue-900" aria-label={menuOpen ? 'Close menu' : 'Open menu'} aria-expanded={menuOpen}>
+                {menuOpen ? <X size={28} /> : <Menu size={28} />}
+              </button>
             </div>
           </div>
+          {menuOpen && (
+            <div className="md:hidden mt-4 border-t pt-2 flex flex-col font-semibold">
+              {navLinks.map(([id, label]) => (
+                <button key={id} onClick={() => scrollToSection(id)} className="text-left py-3 border-b hover:text-blue-600">{label}</button>
+              ))}
+              <a href="https://secure.actblue.com/donate/friendsofnaveen" target="_blank" rel="noopener noreferrer" className="mt-4 mb-2 bg-red-600 text-white text-center px-6 py-3 rounded-full font-bold hover:bg-red-700">DONATE</a>
+            </div>
+          )}
         </div>
       </nav>
 
@@ -64,13 +84,14 @@ const carouselImages = instagramPhotos.length
                 <a href="https://www.townofpittsford.org/electedofficials/contact" target="_blank" rel="noopener noreferrer" className="border-2 border-white px-8 py-4 rounded-full font-bold hover:bg-white hover:text-blue-900">Get in Touch</a>
               </div>
             </div>
-            <div className="bg-white rounded-3xl p-4">
-              <div className="relative h-96 bg-gray-200 rounded-2xl overflow-hidden">
+            <div className="bg-white rounded-3xl p-4 w-full max-w-md mx-auto shadow-2xl">
+              <div className="relative aspect-[4/5] bg-gray-200 rounded-2xl overflow-hidden">
                 {carouselImages.map((img, i) => (
                   <div key={i} className={`absolute inset-0 transition-opacity duration-1000 ${i === currentImageIndex ? 'opacity-100' : 'opacity-0'}`}>
                     <img src={img.url} alt={img.alt} className="w-full h-full object-cover" style={{ objectPosition: img.position }} />
                   </div>
                 ))}
+                <div className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-black/40 to-transparent pointer-events-none" />
                 <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex gap-2">
                   {carouselImages.map((_, i) => (
                     <button key={i} onClick={() => setCurrentImageIndex(i)} className={`h-3 rounded-full transition-all ${i === currentImageIndex ? 'bg-white w-8' : 'bg-white/50 w-3'}`} />
@@ -90,11 +111,11 @@ const carouselImages = instagramPhotos.length
       {/* Stats */}
       <section className="bg-blue-50 border-y-4 border-blue-600 py-8">
         <div className="max-w-7xl mx-auto px-4">
-          <div className="grid grid-cols-4 gap-8 text-center">
-            <div><div className="text-5xl font-bold text-blue-600">20+</div><div className="text-sm text-gray-700">Years Tech Leadership</div></div>
-            <div><div className="text-5xl font-bold text-blue-600">40</div><div className="text-sm text-gray-700">Under 40 Award</div></div>
-            <div><div className="text-5xl font-bold text-blue-600">2024</div><div className="text-sm text-gray-700">Elected to Board</div></div>
-            <div><div className="text-5xl font-bold text-blue-600">100%</div><div className="text-sm text-gray-700">Community Focused</div></div>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+            <div><div className="text-4xl md:text-5xl font-bold text-blue-600">20+</div><div className="text-sm text-gray-700">Years Tech Leadership</div></div>
+            <div><div className="text-4xl md:text-5xl font-bold text-blue-600">40</div><div className="text-sm text-gray-700">Under 40 Award</div></div>
+            <div><div className="text-4xl md:text-5xl font-bold text-blue-600">2024</div><div className="text-sm text-gray-700">Elected to Board</div></div>
+            <div><div className="text-4xl md:text-5xl font-bold text-blue-600">100%</div><div className="text-sm text-gray-700">Community Focused</div></div>
           </div>
         </div>
       </section>
@@ -150,7 +171,7 @@ const carouselImages = instagramPhotos.length
               <p className="text-lg italic font-medium">My family and community are at the center of my life, and I am committed to being a positive and productive member of both.</p>
             </div>
           </div>
-          <div className="grid grid-cols-3 gap-4">
+          <div className="grid md:grid-cols-3 gap-4">
             <div className="bg-white p-6 rounded-xl border-t-4 border-blue-600 shadow-lg">
               <Briefcase className="text-blue-600 mb-4" size={40} />
               <h3 className="text-lg font-bold mb-4">Professional Excellence</h3>
@@ -300,7 +321,7 @@ const carouselImages = instagramPhotos.length
       {/* Footer */}
       <footer className="bg-gray-900 text-white py-12">
         <div className="max-w-7xl mx-auto px-4">
-          <div className="grid grid-cols-3 gap-8 mb-8">
+          <div className="grid sm:grid-cols-3 gap-8 mb-8">
             <div>
               <h4 className="font-bold mb-4">Quick Links</h4>
               <ul className="space-y-2 text-gray-400">

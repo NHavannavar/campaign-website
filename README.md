@@ -103,14 +103,14 @@ Open http://localhost:5173 in your browser.
 
 ## 📝 Customization
 
-### Replace Placeholder Images
-The carousel currently uses placeholder images. Replace them in `src/App.jsx`:
-```javascript
-const carouselImages = [
-  { url: '/images/town-hall.jpg', alt: 'Town Hall' },
-  // Add your actual image paths
-];
-```
+### Photos
+Photos live in `public/images/` and are placed by name in `src/App.jsx`:
+- `town-hall.jpg`: top of the page (portrait works best)
+- `residents.jpeg`: About section, next to the bio
+- `community.jpg`: wide photo between Priorities and About
+- `meeting.jpg`: Town Board section
+
+To swap one, upload a new photo with the same filename. Keep each under about 1600px on the long edge so the page loads quickly on phones.
 
 ### Update Content
 Edit `src/App.jsx` to modify:

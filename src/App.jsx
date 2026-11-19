@@ -350,13 +350,11 @@ export default function App() {
           </div>
         </section>
 
-        {/* Wide photo band */}
-        <figure className="relative">
-          <img src={img('community.jpg')} alt="Naveen greeting veterans at a community event"
-            className="w-full h-[52vh] min-h-[320px] max-h-[560px] object-cover" style={{ objectPosition: 'center 30%' }} loading="lazy" />
-          <figcaption className="absolute left-0 bottom-0 bg-ink text-paper text-sm px-5 py-3 md:left-[max(1.25rem,calc((100vw-72rem)/2+1.25rem))]">
-            With veterans in our community
-          </figcaption>
+        {/* Feature photo */}
+        <figure className="max-w-6xl mx-auto px-5 pt-20 md:pt-28">
+          <img src={img('community.jpg')} alt="Naveen shaking hands with veterans at a community event"
+            className="w-full aspect-[4/3] object-cover" style={{ objectPosition: 'center 15%' }} loading="lazy" />
+          <figcaption className="mt-3 text-sm text-muted">With veterans in our community</figcaption>
         </figure>
 
         {/* Commitments */}

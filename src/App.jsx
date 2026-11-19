@@ -118,7 +118,8 @@ const RECORD = [
     title: 'Parks and accessibility',
     items: [
       [true, 'Secured **$265,000 in state funding** for an accessible King’s Bend Park.'],
-      [false, '**ADA-compliant playgrounds** so children of all abilities can play safely.'],
+      [true, 'An **ADA-compliant playground** at King’s Bend Park.'],
+      [false, '**ADA-compliant playgrounds across all Pittsford parks**, so children of all abilities can play safely.'],
       [false, 'A **wheelchair-accessible fishing platform**.'],
       [true, '**Park bathrooms open in winter** for families with young children and seniors.'],
     ],

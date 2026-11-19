@@ -113,7 +113,7 @@ const RECORD = [
       [true, 'Secured **$265,000 in state funding** for an accessible King’s Bend Park.'],
       [false, '**ADA-compliant playgrounds** so children of all abilities can play safely.'],
       [false, 'A **wheelchair-accessible fishing platform**.'],
-      [false, '**Park bathrooms open in winter** for families with young children and seniors.'],
+      [true, '**Park bathrooms open in winter** for families with young children and seniors.'],
     ],
   },
   {

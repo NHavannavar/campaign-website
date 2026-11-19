@@ -163,7 +163,7 @@ export default function App() {
               <div className="relative">
                 <div className="stripes absolute -right-3 -bottom-3 md:-right-6 md:-bottom-6 w-full h-full" aria-hidden="true" />
                 <img src={img('town-hall.jpg')} alt="Naveen Havannavar at his seat on the Pittsford Town Board"
-                  className="relative w-full aspect-[4/5] object-cover" style={{ objectPosition: 'center 45%' }} />
+                  className="relative w-full aspect-[19/20] object-cover" />
               </div>
               <figcaption className="mt-6 md:mt-9 text-sm text-muted">Pittsford Town Hall, 11 S. Main Street</figcaption>
             </figure>

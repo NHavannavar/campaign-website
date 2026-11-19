@@ -11,7 +11,7 @@ const LINKS = {
   donate: 'https://secure.actblue.com/donate/friendsofnaveen',
   newsletter: 'https://forms.gle/ahPFrddfny4RttRTA',
   volunteer: 'https://forms.gle/bgoQyFWVCz7F5b4A9',
-  contact: 'https://www.townofpittsford.org/electedofficials/contact',
+  contact: 'https://forms.gle/s759HQzR5v4ATLzy7',
   townBoard: 'https://www.townofpittsford.org/townboard',
   town: 'https://www.townofpittsford.org',
   facebook: 'https://www.facebook.com/NaveenForPittsford',
@@ -459,7 +459,7 @@ export default function App() {
               </div>
             </div>
             <div className="mt-10 flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-10 text-paper/80">
-              <a href={LINKS.contact} target="_blank" rel="noopener noreferrer" className="link-draw self-start">Have a question? Contact me through the Town →</a>
+              <a href={LINKS.contact} target="_blank" rel="noopener noreferrer" className="link-draw self-start">Have a question or an idea? Send me a message →</a>
               <div className="flex items-center gap-5">
                 <span className="kicker text-paper/60 text-[0.65rem]">Follow</span>
                 <a href={LINKS.facebook} target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="hover:text-white"><Facebook size={22} strokeWidth={1.5} /></a>

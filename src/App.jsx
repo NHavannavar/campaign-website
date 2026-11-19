@@ -60,7 +60,7 @@ const COMMITMENTS = [
     title: 'Infrastructure',
     made: 'Sidewalks, road maintenance and community input on priorities.',
     kept: "Secured **$265,000** for an accessible King's Bend Park.",
-    next: 'A **pothole-reporting email**, sidewalk expansion and road maintenance.',
+    next: '**More sidewalks**, an updated **Active Transportation Plan**, road maintenance and a **pothole-reporting email**.',
   },
   {
     icon: Landmark,

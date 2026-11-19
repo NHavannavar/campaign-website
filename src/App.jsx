@@ -108,7 +108,7 @@ const RECORD = [
     title: 'Public safety',
     items: [
       [false, 'A **three-part plan on speeding**: infrastructure, education and enforcement, including safety fixes at key intersections.'],
-      [false, 'A **radar speed trailer** during peak traffic months, and flashing STOP signs near schools.'],
+      [false, '**More sidewalks** and an updated **Active Transportation Plan**.'],
       [false, 'A **dedicated email for reporting potholes**, so residents can flag road problems quickly.'],
       [false, 'Wider promotion of the free **rabies clinic** and Monroe County’s **Hyper-Reach** emergency alerts.'],
     ],

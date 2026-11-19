@@ -110,7 +110,7 @@ const RECORD = [
       [false, 'A **three-part plan on speeding**: infrastructure, education and enforcement, including safety fixes at key intersections.'],
       [false, '**More sidewalks** and an updated **Active Transportation Plan**.'],
       [false, 'A **dedicated email for reporting potholes**, so residents can flag road problems quickly.'],
-      [false, 'Wider promotion of the free **rabies clinic** and Monroe County’s **Hyper-Reach** emergency alerts.'],
+      [true, 'Promoted the free **rabies clinic** and Monroe County’s **Hyper-Reach** emergency alerts to more residents.'],
     ],
   },
   {

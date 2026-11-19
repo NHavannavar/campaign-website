@@ -73,8 +73,7 @@ const COMMITMENTS = [
 
 const CREDENTIALS = [
   ['Career', [
-    'Software Engineering Manager at Paychex, leading technology used by 19,000+ employees and a $4M annual budget',
-    'Consolidated 13 business applications into 2, cutting costs and complexity',
+    'Software Engineering Manager at Paychex, leading enterprise technology teams and budgets',
     'Previously Engineering Manager at Xerox; co-founded two Rochester tech startups',
   ]],
   ['Education', ['MBA in Systems and Marketing', 'BSc in Computer Science, Mathematics and Physics', 'Leadership Rochester, 2023 cohort']],

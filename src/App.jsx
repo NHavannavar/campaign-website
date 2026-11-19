@@ -39,7 +39,7 @@ const COMMITMENTS = [
     title: 'Public safety',
     made: 'Modernize emergency alerts and improve traffic safety.',
     kept: "Promoted Monroe County's **Hyper-Reach** text and call alerts.",
-    next: 'A three-part plan on speeding, a **radar speed trailer** and flashing STOP signs near schools.',
+    next: 'A **three-part plan on speeding**: infrastructure, education and enforcement. Exploring new **townwide emergency reporting tools**.',
   },
   {
     icon: Store,
@@ -60,7 +60,7 @@ const COMMITMENTS = [
     title: 'Infrastructure',
     made: 'Sidewalks, road maintenance and community input on priorities.',
     kept: "Secured **$265,000** for an accessible King's Bend Park.",
-    next: 'A **pothole-reporting email**, sidewalk expansion and road maintenance.',
+    next: '**More sidewalks**, an updated **Active Transportation Plan**, road maintenance and a **pothole-reporting email**.',
   },
   {
     icon: Landmark,
@@ -72,11 +72,18 @@ const COMMITMENTS = [
 ];
 
 const CREDENTIALS = [
-  ['Career', ['20+ years in technology leadership at Paychex and Xerox']],
-  ['Education', ['BSc in Mathematics, Physics and Computer Science', 'MBA in Marketing and Systems', 'Leadership Rochester alumnus']],
-  ['Community', ['Board member, Council for Asian Children and Families (CACF)', 'Advisory Board, WXXI Little Theatre', 'Outreach Liaison, India Community Center', 'AAPI Heritage advocate']],
-  ['Recognition', ['Rochester Business Journal Forty Under 40, 2023']],
-  ['Off the clock', ['Actor and certified pilot']],
+  ['Career', [
+    'Software Engineering Manager at Paychex, leading enterprise technology teams and budgets',
+    'Previously Engineering Manager at Xerox; co-founded two Rochester tech startups',
+  ]],
+  ['Education', ['MBA in Systems and Marketing', 'BSc in Computer Science, Mathematics and Physics', 'Leadership Rochester, 2023 cohort']],
+  ['Community', [
+    'Statewide Advisory Committee, Coalition for Asian American Children and Families',
+    'Community Advisory Board, WXXI/Little Theatre',
+    'Past Chair, India Community Center of Rochester',
+  ]],
+  ['Recognition', ['Rochester Business Journal Forty Under 40', 'U.S. patent holder: technology to counter misinformation']],
+  ['Off the clock', ['FAA-licensed private pilot and actor']],
 ];
 
 const HIGHLIGHTS = [
@@ -101,7 +108,7 @@ const RECORD = [
     title: 'Public safety',
     items: [
       [false, 'A **three-part plan on speeding**: infrastructure, education and enforcement, including safety fixes at key intersections.'],
-      [false, 'A **radar speed trailer** during peak traffic months, and flashing STOP signs near schools.'],
+      [false, '**More sidewalks** and an updated **Active Transportation Plan**.'],
       [false, 'A **dedicated email for reporting potholes**, so residents can flag road problems quickly.'],
       [false, 'Wider promotion of the free **rabies clinic** and Monroe County’s **Hyper-Reach** emergency alerts.'],
     ],
@@ -113,7 +120,7 @@ const RECORD = [
       [true, 'Secured **$265,000 in state funding** for an accessible King’s Bend Park.'],
       [false, '**ADA-compliant playgrounds** so children of all abilities can play safely.'],
       [false, 'A **wheelchair-accessible fishing platform**.'],
-      [false, '**Park bathrooms open in winter** for families with young children and seniors.'],
+      [true, '**Park bathrooms open in winter** for families with young children and seniors.'],
     ],
   },
   {
@@ -265,7 +272,7 @@ export default function App() {
           <div className="max-w-6xl mx-auto px-5">
             <p className="kicker text-red mb-3">Delivering for Pittsford</p>
             <h2 className="font-display text-5xl md:text-7xl leading-none mb-6">Less talk, <em className="font-serif italic text-blue whitespace-nowrap">more do.</em></h2>
-            <p className="text-lg text-muted max-w-2xl mb-14">What I've delivered as Deputy Supervisor and Town Board member, and what I'm still pushing for.</p>
+            <p className="text-lg text-muted max-w-2xl mb-14">My record on the Town Board, issue by issue.</p>
 
             {/* Headline results */}
             <div className="grid md:grid-cols-3 gap-x-10 gap-y-10 mb-20">
@@ -329,7 +336,7 @@ export default function App() {
                   <ul className="space-y-4 text-muted leading-relaxed">
                     <li><Rich text="Supporting **Pittsford students and diverse cultural voices**, from celebrating student achievements to championing cultural events." /></li>
                     <li><Rich text="Championed the Town’s recognition of **AAPI Heritage Month**." /></li>
-                    <li><Rich text="Serving on the boards of the **Council for Asian Children and Families** and the **WXXI Little Theatre** advisory board." /></li>
+                    <li><Rich text="Serving on the **Coalition for Asian American Children and Families** statewide advisory committee and the **WXXI/Little Theatre** advisory board." /></li>
                   </ul>
                 </div>
               </article>
@@ -350,20 +357,18 @@ export default function App() {
           </div>
         </section>
 
-        {/* Wide photo band */}
-        <figure className="relative">
-          <img src={img('community.jpg')} alt="Naveen greeting veterans at a community event"
-            className="w-full h-[52vh] min-h-[320px] max-h-[560px] object-cover" style={{ objectPosition: 'center 30%' }} loading="lazy" />
-          <figcaption className="absolute left-0 bottom-0 bg-ink text-paper text-sm px-5 py-3 md:left-[max(1.25rem,calc((100vw-72rem)/2+1.25rem))]">
-            With veterans in our community
-          </figcaption>
+        {/* Feature photo */}
+        <figure className="max-w-6xl mx-auto px-5 pt-20 md:pt-28">
+          <img src={img('community.jpg')} alt="Naveen shaking hands with veterans at a community event"
+            className="w-full aspect-[4/3] object-cover" style={{ objectPosition: 'center 15%' }} loading="lazy" />
+          <figcaption className="mt-3 text-sm text-muted">With veterans in our community</figcaption>
         </figure>
 
         {/* Commitments */}
-        <Section id="commitments" kicker="Accountability" title={<>Made. Kept. <em className="font-serif italic text-blue whitespace-nowrap">Coming up.</em></>}>
-          <p className="text-lg text-muted max-w-2xl -mt-6 mb-12">Here's where each of my 2023 commitments stands: what I promised, what I've delivered and what's next.</p>
+        <Section id="commitments" kicker="Accountability" title={<>Made. Kept. <em className="font-serif italic text-blue whitespace-nowrap">Continuing.</em></>}>
+          <p className="text-lg text-muted max-w-2xl -mt-6 mb-12">Promises from my 2023 campaign, and how I've followed through.</p>
           <div className="hidden md:grid grid-cols-[13rem_1fr_1fr_1fr] gap-8 kicker text-[0.65rem] text-muted pb-3 border-b-2 border-ink">
-            <span>Commitment</span><span>Promised in 2023</span><span className="text-blue">Kept</span><span className="text-red">Coming up</span>
+            <span>Commitment</span><span>Promised in 2023</span><span className="text-blue">Kept</span><span className="text-red">Continuing</span>
           </div>
           <div>
             {COMMITMENTS.map(({ icon: Icon, title, made, kept, next }) => (
@@ -380,7 +385,7 @@ export default function App() {
                   <p className="text-muted leading-relaxed"><Rich text={kept} /></p>
                 </div>
                 <div className="md:border-l-2 md:border-red md:pl-4">
-                  <p className="md:hidden kicker text-[0.6rem] text-red mb-1">Coming up</p>
+                  <p className="md:hidden kicker text-[0.6rem] text-red mb-1">Continuing</p>
                   <p className="text-muted leading-relaxed"><Rich text={next} /></p>
                 </div>
               </article>

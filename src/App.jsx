@@ -82,7 +82,7 @@ const CREDENTIALS = [
     'Community Advisory Board, WXXI/Little Theatre',
     'Past Chair, India Community Center of Rochester',
   ]],
-  ['Recognition', ['Rochester Business Journal Forty Under 40, 2023', 'U.S. patent holder: technology to counter misinformation']],
+  ['Recognition', ['Rochester Business Journal Forty Under 40', 'U.S. patent holder: technology to counter misinformation']],
   ['Off the clock', ['FAA-licensed private pilot and actor']],
 ];
 

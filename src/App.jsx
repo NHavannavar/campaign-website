@@ -143,7 +143,7 @@ export default function App() {
           <div className="max-w-6xl mx-auto px-5 pt-14 pb-20 md:pt-20 md:pb-28 grid md:grid-cols-[1.15fr_1fr] gap-14 items-center">
             <div>
               <p className="kicker text-red mb-5 reveal leading-relaxed" style={{ animationDelay: '0.05s' }}>
-                <span className="whitespace-nowrap">Deputy Town Supervisor ·</span>{' '}
+                <span className="whitespace-nowrap">Deputy Supervisor ·</span>{' '}
                 <span className="whitespace-nowrap">Town Board Member</span>
                 <span className="block text-muted">Pittsford, New York</span>
               </p>

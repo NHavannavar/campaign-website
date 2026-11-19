@@ -20,8 +20,8 @@ const LINKS = {
 
 const NAV = [
   ['record', 'Record'],
+  ['commitments', 'Commitments'],
   ['about', 'About'],
-  ['priorities', 'Priorities'],
   ['get-involved', 'Get Involved'],
 ];
 
@@ -32,40 +32,42 @@ const FACTS = [
   ['At home', 'Park Road Elementary parent'],
 ];
 
-const PRIORITIES = [
+// 2023 platform -> what was delivered -> what's next. Only facts from the record.
+const COMMITMENTS = [
   {
-    icon: Construction,
-    title: 'Infrastructure',
-    points: [
-      'Plan for long-term needs, including sidewalk expansion and road maintenance.',
-      'Bring community groups into setting infrastructure priorities.',
-    ],
+    icon: ShieldCheck,
+    title: 'Public safety',
+    made: 'Modernize emergency alerts and improve traffic safety.',
+    kept: "Promoted Monroe County's **Hyper-Reach** text and call alerts.",
+    next: 'A three-part plan on speeding, a **radar speed trailer** and flashing STOP signs near schools.',
   },
   {
     icon: Store,
     title: 'Economic development',
-    points: [
-      'Support local small businesses and entrepreneurs to grow the tax base.',
-      'Attract new businesses by promoting what makes Pittsford strong.',
-    ],
-  },
-  {
-    icon: ShieldCheck,
-    title: 'Public safety',
-    points: [
-      'Update emergency management plans with modern tools like text alerts.',
-      'Improve traffic safety through enforcement and calming measures.',
-      'Offer community education on safety topics.',
-    ],
+    made: 'Support small businesses and grow the tax base.',
+    kept: 'Town Code now allows **home businesses**, in-home childcare, **microbreweries** and mixed-use development on Monroe Avenue.',
+    next: 'Partnerships with **developers and the Pittsford Chamber of Commerce** to ease the tax burden.',
   },
   {
     icon: Leaf,
     title: 'Environment',
-    points: [
-      'Push for energy-efficiency plans in public buildings.',
-      'Help residents use renewable-energy incentives.',
-      'Work with stakeholders so plans include everyone.',
-    ],
+    made: 'Energy efficiency and renewable energy.',
+    kept: 'Expanded **residential solar**, required **green infrastructure** for parking lots and preserved green space with cluster zoning.',
+    next: '**Energy-efficiency plans** for public buildings.',
+  },
+  {
+    icon: Construction,
+    title: 'Infrastructure',
+    made: 'Sidewalks, road maintenance and community input on priorities.',
+    kept: "Secured **$265,000** for an accessible King's Bend Park.",
+    next: 'A **pothole-reporting email**, sidewalk expansion and road maintenance.',
+  },
+  {
+    icon: Landmark,
+    title: 'Open government',
+    made: 'Transparent, accountable government.',
+    kept: '**Online dog license renewal** and **AI safety training** for Town staff.',
+    next: '**All Town Hall information online**, in documents that are easy to navigate.',
   },
 ];
 
@@ -348,29 +350,6 @@ export default function App() {
           </div>
         </section>
 
-        {/* Priorities */}
-        <Section id="priorities" kicker="Priorities" title="What I'm working on for Pittsford">
-          <div className="grid md:grid-cols-2 gap-x-14">
-            {PRIORITIES.map(({ icon: Icon, title, points }, i) => (
-              <article key={title} className="border-t-2 border-ink pt-6 pb-12">
-                <div className="flex items-baseline justify-between mb-5">
-                  <h3 className="font-display text-3xl">
-                    <span className="font-serif italic text-red text-xl mr-3 align-middle">0{i + 1}</span>{title}
-                  </h3>
-                  <Icon className="text-blue shrink-0" size={26} strokeWidth={1.5} aria-hidden="true" />
-                </div>
-                <ul className="space-y-3 text-muted leading-relaxed">
-                  {points.map((p) => (
-                    <li key={p} className="pl-5 relative">
-                      <span className="absolute left-0 top-[0.7em] w-2 h-px bg-red" aria-hidden="true" />{p}
-                    </li>
-                  ))}
-                </ul>
-              </article>
-            ))}
-          </div>
-        </Section>
-
         {/* Wide photo band */}
         <figure className="relative">
           <img src={img('community.jpg')} alt="Naveen greeting veterans at a community event"
@@ -379,6 +358,35 @@ export default function App() {
             With veterans in our community
           </figcaption>
         </figure>
+
+        {/* Commitments */}
+        <Section id="commitments" kicker="Accountability" title={<>Made. Kept. <em className="font-serif italic text-blue whitespace-nowrap">Coming up.</em></>}>
+          <p className="text-lg text-muted max-w-2xl -mt-6 mb-12">Here's where each of my 2023 commitments stands: what I promised, what I've delivered and what's next.</p>
+          <div className="hidden md:grid grid-cols-[13rem_1fr_1fr_1fr] gap-8 kicker text-[0.65rem] text-muted pb-3 border-b-2 border-ink">
+            <span>Commitment</span><span>Promised in 2023</span><span className="text-blue">Kept</span><span className="text-red">Coming up</span>
+          </div>
+          <div>
+            {COMMITMENTS.map(({ icon: Icon, title, made, kept, next }) => (
+              <article key={title} className="grid md:grid-cols-[13rem_1fr_1fr_1fr] gap-x-8 gap-y-3 py-7 border-b border-line first:border-t-2 first:border-t-ink md:first:border-t-0">
+                <h3 className="flex items-center gap-3 font-display text-2xl leading-tight">
+                  <Icon className="text-blue shrink-0" size={22} strokeWidth={1.5} aria-hidden="true" />{title}
+                </h3>
+                <div>
+                  <p className="md:hidden kicker text-[0.6rem] text-muted mb-1">Promised in 2023</p>
+                  <p className="font-serif italic text-ink/80 leading-relaxed">{made}</p>
+                </div>
+                <div className="md:border-l-2 md:border-blue md:pl-4">
+                  <p className="md:hidden kicker text-[0.6rem] text-blue mb-1">Kept</p>
+                  <p className="text-muted leading-relaxed"><Rich text={kept} /></p>
+                </div>
+                <div className="md:border-l-2 md:border-red md:pl-4">
+                  <p className="md:hidden kicker text-[0.6rem] text-red mb-1">Coming up</p>
+                  <p className="text-muted leading-relaxed"><Rich text={next} /></p>
+                </div>
+              </article>
+            ))}
+          </div>
+        </Section>
 
         {/* About */}
         <Section id="about" kicker="About" title="A neighbor first.">

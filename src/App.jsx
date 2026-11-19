@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import {
   Menu, X, Facebook, Instagram, ArrowRight, ArrowUpRight, Check,
   Construction, Store, ShieldCheck, Leaf, CalendarDays, MapPin, Phone,
+  PiggyBank, Trees, Landmark, ScrollText, HeartHandshake,
 } from 'lucide-react';
 
 const img = (name) => `${import.meta.env.BASE_URL}images/${name}`;
@@ -18,9 +19,9 @@ const LINKS = {
 };
 
 const NAV = [
+  ['record', 'Record'],
   ['about', 'About'],
   ['priorities', 'Priorities'],
-  ['town-board', 'Town Board'],
   ['get-involved', 'Get Involved'],
 ];
 
@@ -71,16 +72,87 @@ const PRIORITIES = [
 const CREDENTIALS = [
   ['Career', ['20+ years in technology leadership at Paychex and Xerox']],
   ['Education', ['BSc in Mathematics, Physics and Computer Science', 'MBA in Marketing and Systems', 'Leadership Rochester alumnus']],
-  ['Community', ['Outreach Liaison, India Community Center', 'Advisory Board, WXXI Little Theatre', 'AAPI Heritage advocate']],
+  ['Community', ['Board member, Council for Asian Children and Families (CACF)', 'Advisory Board, WXXI Little Theatre', 'Outreach Liaison, India Community Center', 'AAPI Heritage advocate']],
   ['Recognition', ['Rochester Business Journal Forty Under 40, 2023']],
   ['Off the clock', ['Actor and certified pilot']],
 ];
 
-const ACCOMPLISHMENTS = [
-  ['Emergency notifications', "Promoted Monroe County's Hyper-Reach alert system so residents get emergency texts and calls."],
-  ['AAPI Heritage Month', 'Championed the town’s recognition of Asian American and Pacific Islander Heritage Month.'],
-  ['Roads and potholes', 'Pressing for repairs and longer-term road improvements across town.'],
+const HIGHLIGHTS = [
+  ['50% → 65%', 'Senior tax relief', 'Led the increase in the senior property tax exemption, adopted unanimously in February 2026. Seniors with household incomes under $49,000 now get the higher exemption.'],
+  ['$265,000', "King's Bend Park", 'Secured with Assemblymember Jen Lunsford and Senator Jeremy Cooney to make the park accessible for children and people of all ages and abilities.'],
+  ['Unanimous', 'Disabled veterans', "Brought Monroe County Veterans Services' request for a property tax exemption for fully disabled veterans to the Board. Adopted October 2026."],
 ];
+
+// done: true = delivered; false = proposed or still pushing for it
+const RECORD = [
+  {
+    icon: PiggyBank,
+    title: 'Tax relief',
+    items: [
+      [true, 'Raised the **senior property tax exemption** from 50% to 65%.'],
+      [true, 'Won a **property tax exemption for fully disabled veterans**.'],
+      [false, 'Partnerships with **developers and the Pittsford Chamber of Commerce** to ease the tax burden on residents.'],
+    ],
+  },
+  {
+    icon: ShieldCheck,
+    title: 'Public safety',
+    items: [
+      [false, 'A **three-part plan on speeding**: infrastructure, education and enforcement, including safety fixes at key intersections.'],
+      [false, 'A **radar speed trailer** during peak traffic months, and flashing STOP signs near schools.'],
+      [false, 'A **dedicated email for reporting potholes**, so residents can flag road problems quickly.'],
+      [false, 'Wider promotion of the free **rabies clinic** and Monroe County’s **Hyper-Reach** emergency alerts.'],
+    ],
+  },
+  {
+    icon: Trees,
+    title: 'Parks and accessibility',
+    items: [
+      [true, 'Secured **$265,000 in state funding** for an accessible King’s Bend Park.'],
+      [false, '**ADA-compliant playgrounds** so children of all abilities can play safely.'],
+      [false, 'A **wheelchair-accessible fishing platform**.'],
+      [false, '**Park bathrooms open in winter** for families with young children and seniors.'],
+    ],
+  },
+  {
+    icon: Landmark,
+    title: 'Open, accountable government',
+    items: [
+      [true, '**Online dog license renewal**. It’s live.'],
+      [true, '**AI safety training for Town employees**, now part of the Town’s 2026 security training to protect residents’ data.'],
+      [false, '**All Town Hall information online**, so you don’t have to call or visit.'],
+      [false, '**Easy-to-navigate public documents** on the Town website.'],
+    ],
+  },
+];
+
+const TOWN_CODE = [
+  'Expanded **cluster zoning** to preserve green space while managing growth',
+  'Stronger **viewshed protections** for Pittsford’s scenic character',
+  '**Green infrastructure** required for parking lots',
+  '**Mixed commercial and residential** development on Monroe Avenue',
+  'More options for **senior living and flexible housing**',
+  '**Microbreweries and microdistilleries** allowed in mixed-use zones',
+  '**In-home childcare and home businesses** allowed',
+  'Expanded **residential solar**, on-site farm stands, dark skies and beekeeping',
+  'Stronger rules on **junk storage, fences and retaining walls**',
+];
+
+// Render **bold** spans inside a plain string
+function Rich({ text }) {
+  return text.split(/\*\*(.+?)\*\*/).map((part, i) =>
+    i % 2 ? <strong key={i} className="font-semibold text-ink">{part}</strong> : part
+  );
+}
+
+function Status({ done }) {
+  return done ? (
+    <span className="kicker text-[0.6rem] inline-flex items-center gap-1 bg-blue text-paper px-1.5 py-0.5 rounded-sm"><Check size={11} strokeWidth={3} />Done</span>
+  ) : (
+    <span className="kicker text-[0.6rem] inline-flex items-center border border-line text-muted px-1.5 py-0.5 rounded-sm">Pushing for</span>
+  );
+}
+
 
 function Section({ id, kicker, title, children, className = '' }) {
   return (
@@ -186,6 +258,96 @@ export default function App() {
           </dl>
         </section>
 
+        {/* Record */}
+        <section id="record" className="py-20 md:py-28 bg-parchment/60 border-b border-line">
+          <div className="max-w-6xl mx-auto px-5">
+            <p className="kicker text-red mb-3">Delivering for Pittsford</p>
+            <h2 className="font-display text-5xl md:text-7xl leading-none mb-6">Less talk, <em className="font-serif italic text-blue whitespace-nowrap">more do.</em></h2>
+            <p className="text-lg text-muted max-w-2xl mb-14">What I've delivered as Deputy Supervisor and Town Board member, and what I'm still pushing for.</p>
+
+            {/* Headline results */}
+            <div className="grid md:grid-cols-3 gap-x-10 gap-y-10 mb-20">
+              {HIGHLIGHTS.map(([figure, title, body]) => (
+                <article key={title} className="border-t-2 border-ink pt-5">
+                  <p className="font-display text-5xl lg:text-6xl text-blue leading-none mb-4 whitespace-nowrap">{figure}</p>
+                  <h3 className="font-serif font-bold text-xl mb-2">{title}</h3>
+                  <p className="text-muted leading-relaxed">{body}</p>
+                </article>
+              ))}
+            </div>
+
+            {/* Full record by topic */}
+            <div className="grid md:grid-cols-2 gap-x-14 gap-y-12 mb-16">
+              {RECORD.map(({ icon: Icon, title, items }) => (
+                <article key={title}>
+                  <h3 className="flex items-center gap-3 font-display text-3xl border-b border-ink pb-3 mb-2">
+                    <Icon className="text-blue shrink-0" size={24} strokeWidth={1.5} aria-hidden="true" />{title}
+                  </h3>
+                  <ul>
+                    {items.map(([done, text]) => (
+                      <li key={text} className="py-3 border-b border-line">
+                        <div className="mb-1.5"><Status done={done} /></div>
+                        <p className="text-muted leading-relaxed"><Rich text={text} /></p>
+                      </li>
+                    ))}
+                  </ul>
+                </article>
+              ))}
+            </div>
+
+            {/* Town Code */}
+            <article className="bg-paper border border-line p-7 md:p-10 mb-16">
+              <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-3 mb-6">
+                <h3 className="flex items-center gap-3 font-display text-3xl">
+                  <ScrollText className="text-blue shrink-0" size={24} strokeWidth={1.5} aria-hidden="true" />Updating our Town Code
+                </h3>
+                <p className="text-sm text-muted md:max-w-sm md:text-right">With fellow Board members and the Town’s zoning team</p>
+              </div>
+              <ul className="grid md:grid-cols-2 lg:grid-cols-3 gap-x-8">
+                {TOWN_CODE.map((t) => (
+                  <li key={t} className="py-3 border-t border-line text-muted leading-relaxed pl-5 relative">
+                    <span className="absolute left-0 top-[1.45em] w-2 h-px bg-red" aria-hidden="true" /><Rich text={t} />
+                  </li>
+                ))}
+              </ul>
+            </article>
+
+            {/* Community + meetings */}
+            <div className="grid lg:grid-cols-[1.25fr_1fr] gap-12 lg:gap-16">
+              <article>
+                <h3 className="flex items-center gap-3 font-display text-3xl border-b border-ink pb-3 mb-6">
+                  <HeartHandshake className="text-blue shrink-0" size={24} strokeWidth={1.5} aria-hidden="true" />Community
+                </h3>
+                <div className="grid sm:grid-cols-[13rem_1fr] gap-6 items-start">
+                  <figure>
+                    <img src={img('meeting.jpg')} alt="Naveen at an AAPI Heritage Month event at the New York State Executive Mansion"
+                      className="w-full aspect-square object-cover" style={{ objectPosition: 'center 25%' }} loading="lazy" />
+                    <figcaption className="mt-2 text-sm text-muted">AAPI Heritage Month at the New York State Executive Mansion</figcaption>
+                  </figure>
+                  <ul className="space-y-4 text-muted leading-relaxed">
+                    <li><Rich text="Supporting **Pittsford students and diverse cultural voices**, from celebrating student achievements to championing cultural events." /></li>
+                    <li><Rich text="Championed the Town’s recognition of **AAPI Heritage Month**." /></li>
+                    <li><Rich text="Serving on the boards of the **Council for Asian Children and Families** and the **WXXI Little Theatre** advisory board." /></li>
+                  </ul>
+                </div>
+              </article>
+            <aside className="stars text-paper p-8 md:p-10 self-start">
+              <p className="kicker text-paper/70 mb-3">Come to a meeting</p>
+              <h3 className="font-display text-3xl mb-8">The Town Board meets in public, and you're welcome.</h3>
+              <ul className="space-y-5 mb-9">
+                <li className="flex gap-4"><CalendarDays className="shrink-0 mt-0.5" size={20} strokeWidth={1.5} /><span>1st and 3rd Tuesday of each month, 6:00 PM</span></li>
+                <li className="flex gap-4"><MapPin className="shrink-0 mt-0.5" size={20} strokeWidth={1.5} /><span>Town Hall, Lower Level<br />11 S. Main Street, Pittsford</span></li>
+                <li className="flex gap-4"><Phone className="shrink-0 mt-0.5" size={20} strokeWidth={1.5} /><a href="tel:+15852486200" className="link-draw">(585) 248-6200</a></li>
+              </ul>
+              <a href={LINKS.townBoard} target="_blank" rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 border border-paper/60 px-5 py-3 rounded-sm font-semibold hover:bg-paper hover:text-ink transition-colors">
+                Minutes and agendas <ArrowUpRight size={18} />
+              </a>
+            </aside>
+            </div>
+          </div>
+        </section>
+
         {/* Priorities */}
         <Section id="priorities" kicker="Priorities" title="What I'm working on for Pittsford">
           <div className="grid md:grid-cols-2 gap-x-14">
@@ -249,44 +411,6 @@ export default function App() {
                 ))}
               </dl>
             </div>
-          </div>
-        </Section>
-
-        {/* Town Board work */}
-        <Section id="town-board" kicker="On the Town Board" title="Recent work" className="bg-parchment/60 border-y border-line">
-          <div className="grid lg:grid-cols-[1.25fr_1fr] gap-12 lg:gap-16">
-            <div>
-              <ol className="border-t border-line">
-                {ACCOMPLISHMENTS.map(([title, body]) => (
-                  <li key={title} className="flex gap-5 py-6 border-b border-line">
-                    <span className="mt-1 w-7 h-7 shrink-0 rounded-full border border-blue text-blue flex items-center justify-center"><Check size={15} /></span>
-                    <div>
-                      <h3 className="font-serif font-bold text-xl mb-1">{title}</h3>
-                      <p className="text-muted leading-relaxed">{body}</p>
-                    </div>
-                  </li>
-                ))}
-              </ol>
-              <figure className="mt-10 grid sm:grid-cols-[14rem_1fr] gap-5 items-end">
-                <img src={img('meeting.jpg')} alt="Naveen at an AAPI Heritage Month event at the New York State Executive Mansion"
-                  className="w-full aspect-square object-cover" style={{ objectPosition: 'center 25%' }} loading="lazy" />
-                <figcaption className="text-sm text-muted">AAPI Heritage Month celebration at the New York State Executive Mansion</figcaption>
-              </figure>
-            </div>
-
-            <aside className="stars text-paper p-8 md:p-10 self-start">
-              <p className="kicker text-paper/70 mb-3">Come to a meeting</p>
-              <h3 className="font-display text-3xl mb-8">The Town Board meets in public, and you're welcome.</h3>
-              <ul className="space-y-5 mb-9">
-                <li className="flex gap-4"><CalendarDays className="shrink-0 mt-0.5" size={20} strokeWidth={1.5} /><span>1st and 3rd Tuesday of each month, 6:00 PM</span></li>
-                <li className="flex gap-4"><MapPin className="shrink-0 mt-0.5" size={20} strokeWidth={1.5} /><span>Town Hall, Lower Level<br />11 S. Main Street, Pittsford</span></li>
-                <li className="flex gap-4"><Phone className="shrink-0 mt-0.5" size={20} strokeWidth={1.5} /><a href="tel:+15852486200" className="link-draw">(585) 248-6200</a></li>
-              </ul>
-              <a href={LINKS.townBoard} target="_blank" rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 border border-paper/60 px-5 py-3 rounded-sm font-semibold hover:bg-paper hover:text-ink transition-colors">
-                Minutes and agendas <ArrowUpRight size={18} />
-              </a>
-            </aside>
           </div>
         </Section>
 

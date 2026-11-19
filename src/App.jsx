@@ -272,7 +272,7 @@ export default function App() {
           <div className="max-w-6xl mx-auto px-5">
             <p className="kicker text-red mb-3">Delivering for Pittsford</p>
             <h2 className="font-display text-5xl md:text-7xl leading-none mb-6">Less talk, <em className="font-serif italic text-blue whitespace-nowrap">more do.</em></h2>
-            <p className="text-lg text-muted max-w-2xl mb-14">What I've delivered as Deputy Supervisor and Town Board member, and what I'm still pushing for.</p>
+            <p className="text-lg text-muted max-w-2xl mb-14">My record on the Town Board, issue by issue.</p>
 
             {/* Headline results */}
             <div className="grid md:grid-cols-3 gap-x-10 gap-y-10 mb-20">
@@ -366,7 +366,7 @@ export default function App() {
 
         {/* Commitments */}
         <Section id="commitments" kicker="Accountability" title={<>Made. Kept. <em className="font-serif italic text-blue whitespace-nowrap">Continuing.</em></>}>
-          <p className="text-lg text-muted max-w-2xl -mt-6 mb-12">Here's where each of my 2023 commitments stands: what I promised, what I've delivered and what I'm still working on.</p>
+          <p className="text-lg text-muted max-w-2xl -mt-6 mb-12">Promises from my 2023 campaign, and how I've followed through.</p>
           <div className="hidden md:grid grid-cols-[13rem_1fr_1fr_1fr] gap-8 kicker text-[0.65rem] text-muted pb-3 border-b-2 border-ink">
             <span>Commitment</span><span>Promised in 2023</span><span className="text-blue">Kept</span><span className="text-red">Continuing</span>
           </div>

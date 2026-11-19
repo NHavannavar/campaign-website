@@ -74,7 +74,7 @@ const COMMITMENTS = [
 const CREDENTIALS = [
   ['Career', ['20+ years in technology leadership at Paychex and Xerox']],
   ['Education', ['BSc in Mathematics, Physics and Computer Science', 'MBA in Marketing and Systems', 'Leadership Rochester alumnus']],
-  ['Community', ['Board member, Council for Asian Children and Families (CACF)', 'Advisory Board, WXXI Little Theatre', 'Outreach Liaison, India Community Center', 'AAPI Heritage advocate']],
+  ['Community', ['Board member, Council for Asian Children and Families (CACF)', 'Advisory Board, WXXI/Little Theatre', 'Outreach Liaison, India Community Center', 'AAPI Heritage advocate']],
   ['Recognition', ['Rochester Business Journal Forty Under 40, 2023']],
   ['Off the clock', ['Actor and certified pilot']],
 ];
@@ -329,7 +329,7 @@ export default function App() {
                   <ul className="space-y-4 text-muted leading-relaxed">
                     <li><Rich text="Supporting **Pittsford students and diverse cultural voices**, from celebrating student achievements to championing cultural events." /></li>
                     <li><Rich text="Championed the Town’s recognition of **AAPI Heritage Month**." /></li>
-                    <li><Rich text="Serving on the boards of the **Council for Asian Children and Families** and the **WXXI Little Theatre** advisory board." /></li>
+                    <li><Rich text="Serving on the boards of the **Council for Asian Children and Families** and the **WXXI/Little Theatre** advisory board." /></li>
                   </ul>
                 </div>
               </article>

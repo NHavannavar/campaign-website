@@ -1,0 +1,9 @@
+// Cloudflare deploy settings: serve the built site in ./dist as static files.
+{
+  "name": "campaign-website",
+  "compatibility_date": "2025-06-01",
+  "assets": {
+    "directory": "./dist",
+    "not_found_handling": "404-page"
+  }
+}

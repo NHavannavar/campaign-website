@@ -39,7 +39,7 @@ const COMMITMENTS = [
     title: 'Public safety',
     made: 'Modernize emergency alerts and improve traffic safety.',
     kept: "Promoted Monroe County's **Hyper-Reach** text and call alerts.",
-    next: 'A three-part plan on speeding, a **radar speed trailer** and flashing STOP signs near schools.',
+    next: 'A **three-part plan on speeding**: infrastructure, education and enforcement. Exploring new **townwide emergency reporting tools**.',
   },
   {
     icon: Store,
@@ -365,10 +365,10 @@ export default function App() {
         </figure>
 
         {/* Commitments */}
-        <Section id="commitments" kicker="Accountability" title={<>Made. Kept. <em className="font-serif italic text-blue whitespace-nowrap">Coming up.</em></>}>
-          <p className="text-lg text-muted max-w-2xl -mt-6 mb-12">Here's where each of my 2023 commitments stands: what I promised, what I've delivered and what's next.</p>
+        <Section id="commitments" kicker="Accountability" title={<>Made. Kept. <em className="font-serif italic text-blue whitespace-nowrap">Continuing.</em></>}>
+          <p className="text-lg text-muted max-w-2xl -mt-6 mb-12">Here's where each of my 2023 commitments stands: what I promised, what I've delivered and what I'm still working on.</p>
           <div className="hidden md:grid grid-cols-[13rem_1fr_1fr_1fr] gap-8 kicker text-[0.65rem] text-muted pb-3 border-b-2 border-ink">
-            <span>Commitment</span><span>Promised in 2023</span><span className="text-blue">Kept</span><span className="text-red">Coming up</span>
+            <span>Commitment</span><span>Promised in 2023</span><span className="text-blue">Kept</span><span className="text-red">Continuing</span>
           </div>
           <div>
             {COMMITMENTS.map(({ icon: Icon, title, made, kept, next }) => (
@@ -385,7 +385,7 @@ export default function App() {
                   <p className="text-muted leading-relaxed"><Rich text={kept} /></p>
                 </div>
                 <div className="md:border-l-2 md:border-red md:pl-4">
-                  <p className="md:hidden kicker text-[0.6rem] text-red mb-1">Coming up</p>
+                  <p className="md:hidden kicker text-[0.6rem] text-red mb-1">Continuing</p>
                   <p className="text-muted leading-relaxed"><Rich text={next} /></p>
                 </div>
               </article>

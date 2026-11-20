@@ -243,6 +243,10 @@ export default function App() {
                   Get email updates
                 </a>
               </div>
+              <p className="mt-8 flex items-center gap-3 text-ink reveal" style={{ animationDelay: '0.55s' }}>
+                <CalendarDays className="text-red shrink-0" size={20} strokeWidth={1.75} aria-hidden="true" />
+                <span className="flex flex-wrap items-baseline gap-x-2"><span className="kicker text-red">On the ballot</span><span className="font-serif text-lg whitespace-nowrap">Tuesday, November 2, 2027</span></span>
+              </p>
             </div>
 
             <figure className="mx-auto w-full max-w-sm md:max-w-md reveal" style={{ animationDelay: '0.25s' }}>
@@ -341,7 +345,7 @@ export default function App() {
                   </ul>
                 </div>
               </article>
-            <aside className="stars text-paper p-8 md:p-10 self-start">
+            <div className="stars text-paper p-8 md:p-10 self-start" role="region" aria-label="Town Board meetings">
               <p className="kicker text-paper/70 mb-3">Come to a meeting</p>
               <h3 className="font-display text-3xl mb-8">The Town Board meets in public, and you're welcome.</h3>
               <ul className="space-y-5 mb-9">
@@ -353,7 +357,7 @@ export default function App() {
                 className="inline-flex items-center gap-2 border border-paper/60 px-5 py-3 rounded-sm font-semibold hover:bg-paper hover:text-ink transition-colors">
                 Minutes and agendas <ArrowUpRight size={18} />
               </a>
-            </aside>
+            </div>
             </div>
           </div>
         </section>
@@ -405,7 +409,7 @@ export default function App() {
             <div>
               <div className="space-y-5 text-lg leading-relaxed">
                 <p>
-                  I'm honored to serve on the Pittsford Town Board. My wife Kate and I have lived here for years, and our
+                  I'm honored to serve on the Pittsford Town Board. My wife Kate and I have lived in Pittsford since 2018, and our
                   two children, Neel and Leela, attend Park Road Elementary. I care about this town's future because my family lives it every day.
                 </p>
                 <p>
